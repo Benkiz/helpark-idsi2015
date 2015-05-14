@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- blablabla -->
 	<meta charset="UTF-8">
 	<title>HelPark</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script type="text/javascript">
 // This example adds a search box to a map, using the Google Place Autocomplete
@@ -13,26 +12,21 @@
 // pick list containing a mix of places and predicted search terms.
 
 function initialize() {
-
+	
+//On crée une nouvelle carte google dans la variable map qu'on affichera dans la div main
   var markers = [];
-  var map = new google.maps.Map(document.getElementById('main'), {
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-
-  var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(46.246586,6.0459022),
-      new google.maps.LatLng(46.103786,6.1331022));
+  var map = new google.maps.Map(document.getElementById('main'), {mapTypeId: google.maps.MapTypeId.ROADMAP});
+  
+//On configure l'emplacement où notre map pointera au chargement de la page
+  var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(46.246586,6.0459022),new google.maps.LatLng(46.103786,6.1331022));
   map.fitBounds(defaultBounds);
   
-  
-  var georssLayer = new google.maps.KmlLayer({
-    url: 'http://helpark.alwaysdata.net/PlacesHandicapeesGeneve.kmz'
-  });
-  georssLayer.setMap(map);
+  //On crée une nouvelle couche kml qu'on remplit en uploadant un fichier kmz hosté sur un serveur externe et on l'affiche
+  var placeHandicape = new google.maps.KmlLayer({ url: 'http://helpark.alwaysdata.net/PlacesHandicapeesGeneve.kmz'});
+  placeHandicape.setMap(map);
 
-  // Create the search box and link it to the UI element.
-  var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
+  //On crée notre barre de recherche et on l'affiche sur la map en hautà gauche.
+  var input = /** @type {HTMLInputElement} */(document.getElementById('pac-input'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   var searchBox = new google.maps.places.SearchBox(
@@ -63,21 +57,12 @@ function initialize() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      // Create a marker for each place.
-      var marker = new google.maps.Marker({
-        map: map,
-        icon: image,
-        title: place.name,
-        position: place.geometry.location,
-		zoom: 10
-      });
-
+      //Crée un marqueur sur l'emplacement de notre recherche
+      var marker = new google.maps.Marker({map: map, icon: image, title: place.name, position: place.geometry.location,zoom: 10});
       markers.push(marker);
-
       bounds.extend(place.geometry.location);
     }
-
-    map.fitBounds(bounds);
+	map.fitBounds(bounds);
   });
   // [END region_getplaces]
 
@@ -103,12 +88,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						<li class="selected">
 							<a href="index.html">Home</a>
 						</li>
-					<!--	<li>
-							<a href="about.html">About</a>
-						</li>
-						<li>
-							<a href="contact.html">Contact</a>
-						</li>-->
 					</ul>
 				</div>
 			</div>
@@ -118,17 +97,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				<div>
 					<img src="images/helpark_index.png" alt="Img" height="390" width="632">
 					<h1>HelPark</h1>
-					<h4>Bla bla </h4>
+					<h4>Recherchez une place handicapée dans Genève </h4>
 					<p>
-						Bla bla bla
+						HelPark est un service affichant toutes les places handicapées à travers Genève ainsi qu'un bref descriptif. 
+						<br>
+						<br>
+						Vous désirez vous rendre à un endroit et vous souhaitez savoir au préalable s'il y a une place handicapée à proximité de votre destination ? HelPark est fait pour vous !
 					</p>
 				</div>
 			</div>
-			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+			<input id="pac-input" class="controls" type="text" placeholder="Entrez votre destination ici">
 			<div id="main">
-			
-			<!--<iframe src="https://www.google.com/maps/d/edit?mid=zZCd5759T4us.k86dyeTJXBDY" width="100%" height="480" frameborder="0" style="border:0"></iframe>-->
-			<!--AIzaSyDAfbS9UTtZBRUY9tW_EvhZD4VD6AvOB0A-->
 			</div>
 		</div>
 		<div id="footer" style="background-color:blue;">
