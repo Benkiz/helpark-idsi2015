@@ -6,6 +6,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>afficherHelpark</servlet-name>
-    <url-pattern>/bonjour</url-pattern>
+    <url-pattern>/helpark</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -2,14 +2,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>HelPark</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script type="text/javascript">
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
 
 function initialize() {
 	
@@ -82,11 +80,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<div id="page">
 		<div id="header" style="background-color:blue;">
 			<div class="background">
-				<h1 id="logo"> <a href="index.html">HelPark</a> </h1>
+				<h1 id="logo"> <a href="helpark.jsp">HelPark</a> </h1>
 				<div id="navigation">
 					<ul>
 						<li class="selected">
-							<a href="index.html">Home</a>
+							<a href="helpark.jsp">Home</a>
+						</li>
+						<li>
+							<a href="/WEB-INF/helpark_about.jsp">Get our app</a>
 						</li>
 					</ul>
 				</div>

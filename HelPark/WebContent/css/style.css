@@ -64,6 +64,10 @@ body {
 	padding: 1px 10px;
 }
 
+#navigation li {
+    float: left;
+}
+
 #navigation li a {
 	color: #636974;
 	display: block;
