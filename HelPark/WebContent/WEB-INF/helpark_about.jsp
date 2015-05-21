@@ -14,10 +14,10 @@
 				<div id="navigation">
 					<ul>
 						<li>
-							<a href="helpark.jsp">Home</a>
+							<a href="http://localhost:8080/HelPark/helpark">Home</a>
 						</li>
 						<li class="selected">
-							<a href="helpark_about.jsp">Get our app</a>
+							<a href="http://localhost:8080/HelPark/afficherAbout">Get our app</a>
 						</li>
 					</ul>
 				</div>

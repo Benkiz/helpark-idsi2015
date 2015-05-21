@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/afficherHelpark")
-public class afficherHelpark extends HttpServlet {
+@WebServlet("/afficherAbout")
+public class afficherAbout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public afficherHelpark() {
+    public afficherAbout() {
         super();
     }
     //On renvoie la requête et la réponse http vers l'emplacement de notre JSP
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/helpark.jsp").forward(request, response);
-        
+        this.getServletContext().getRequestDispatcher("/WEB-INF/helpark_about.jsp").forward(request, response);
 	}
 
+	
+
 }
-
-

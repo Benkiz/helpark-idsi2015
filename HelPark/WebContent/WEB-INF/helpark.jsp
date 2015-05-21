@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="ch.unige.idsi2015.afficherHelpark" %> 
+<%@page import="ch.unige.idsi2015.afficherAbout" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,26 +15,26 @@
 
 function initialize() {
 	
-//On crée une nouvelle carte google dans la variable map qu'on affichera dans la div main
+//On crÃ©e une nouvelle carte google dans la variable map qu'on affichera dans la div main
   var markers = [];
   var map = new google.maps.Map(document.getElementById('main'), {mapTypeId: google.maps.MapTypeId.ROADMAP});
   
-//On configure l'emplacement où notre map pointera au chargement de la page
+//On configure l'emplacement oÃ¹ notre map pointera au chargement de la page
   var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(46.246586,6.0459022),new google.maps.LatLng(46.103786,6.1331022));
   map.fitBounds(defaultBounds);
   
-  //On crée une nouvelle couche kml qu'on remplit en uploadant un fichier kmz hosté sur un serveur externe et on l'affiche
+  //On crÃ©e une nouvelle couche kml qu'on remplit en uploadant un fichier kmz hostÃ© sur un serveur externe et on l'affiche
   var placeHandicape = new google.maps.KmlLayer({ url: 'http://helpark.alwaysdata.net/PlacesHandicapeesGeneve.kmz'});
   placeHandicape.setMap(map);
 
-  //On crée notre barre de recherche et on l'affiche sur la map en hautà gauche.
+  //On crÃ©e notre barre de recherche et on l'affiche sur la map en hautÃ  gauche.
   var input = (document.getElementById('pac-input'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   var searchBox = new google.maps.places.SearchBox((input));
 
-  //Lorsqu'un utilisateur fait une recherche, une liste déroulante des recherches les plus pertinentes appraraît
-  //Si l'utilisateur sélectionne un item de cette liste, retrouve les infos de cette dernière et l'affiche
+  //Lorsqu'un utilisateur fait une recherche, une liste dÃ©roulante des recherches les plus pertinentes appraraÃ®t
+  //Si l'utilisateur sÃ©lectionne un item de cette liste, retrouve les infos de cette derniÃ¨re et l'affiche
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -53,7 +57,7 @@ function initialize() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      //Crée un marqueur sur l'emplacement de notre recherche
+      //CrÃ©e un marqueur sur l'emplacement de notre recherche
       var marker = new google.maps.Marker({map: map, icon: image, title: place.name, position: place.geometry.location,zoom: 10});
       markers.push(marker);
       bounds.extend(place.geometry.location);
@@ -80,10 +84,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				<div id="navigation">
 					<ul>
 						<li class="selected">
-							<a href="helpark.jsp">Home</a>
+							<a href="http://localhost:8080/HelPark/helpark">Home</a>
 						</li>
 						<li>
-							<a href="/WEB-INF/helpark_about.jsp">Get our app</a>
+							<a href="http://localhost:8080/HelPark/afficherAbout">Get our app</a>
 						</li>
 					</ul>
 				</div>
@@ -92,14 +96,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<div id="contents">
 			<div id="adbox">
 				<div>
-					<img src="images/helpark_index.png" alt="Img" height="390" width="632">
+					<img src="images/marker_web.png" alt="Img">
 					<h1>HelPark</h1>
-					<h4>Recherchez une place handicapée dans Genève </h4>
+					<h4>Recherchez une place handicapÃ©e dans GenÃ¨ve </h4>
 					<p>
-						HelPark est un service affichant toutes les places handicapées à travers Genève ainsi qu'un bref descriptif. 
+						HelPark est un service affichant toutes les places handicapÃ©es Ã  travers GenÃ¨ve ainsi qu'un bref descriptif. 
 						<br>
 						<br>
-						Vous désirez vous rendre à un endroit et vous souhaitez savoir au préalable s'il y a une place handicapée à proximité de votre destination ? HelPark est fait pour vous !
+						Vous dÃ©sirez vous rendre Ã  un endroit et vous souhaitez savoir au prÃ©alable s'il y a une place handicapÃ©e Ã  proximitÃ© de votre destination ? HelPark est fait pour vous !
 					</p>
 				</div>
 			</div>
@@ -111,7 +115,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<div class="background">
 				<div class="body">
 					<p id="footnote">
-						© 2015. Tous droits reservés.
+						Â© 2015. Tous droits reservÃ©s.
 					</p>
 					
 				</div>
