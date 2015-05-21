@@ -24,15 +24,13 @@ function initialize() {
   placeHandicape.setMap(map);
 
   //On crée notre barre de recherche et on l'affiche sur la map en hautà gauche.
-  var input = /** @type {HTMLInputElement} */(document.getElementById('pac-input'));
+  var input = (document.getElementById('pac-input'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-  var searchBox = new google.maps.places.SearchBox(
-    /** @type {HTMLInputElement} */(input));
+  var searchBox = new google.maps.places.SearchBox((input));
 
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects an item from the
-  // pick list. Retrieve the matching places for that item.
+  //Lorsqu'un utilisateur fait une recherche, une liste déroulante des recherches les plus pertinentes appraraît
+  //Si l'utilisateur sélectionne un item de cette liste, retrouve les infos de cette dernière et l'affiche
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -43,7 +41,7 @@ function initialize() {
       marker.setMap(null);
     }
 
-    // For each place, get the icon, place name, and location.
+    // Pour chaque place, on charge le marqueur, le nom de l'emplacement et la localisation.
     markers = [];
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0, place; place = places[i]; i++) {
@@ -62,10 +60,8 @@ function initialize() {
     }
 	map.fitBounds(bounds);
   });
-  // [END region_getplaces]
-
-  // Bias the SearchBox results towards places that are within the bounds of the
-  // current map's viewport.
+  
+  
   google.maps.event.addListener(map, 'bounds_changed', function() {
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);

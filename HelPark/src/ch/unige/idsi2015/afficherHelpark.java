@@ -15,9 +15,8 @@ public class afficherHelpark extends HttpServlet {
        
     public afficherHelpark() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
+    //On renvoie la requête et la réponse http vers l'emplacement de notre JSP
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("/WEB-INF/helpark.jsp").forward(request, response);
 	}
